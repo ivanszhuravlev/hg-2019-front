@@ -13,13 +13,12 @@ const styles = StyleSheet.create({
         paddingHorizontal: 12,
         paddingVertical: 6,
         flexGrow: 1,
-        width: '100%'
     },
     mapButton: {
         paddingHorizontal: 18,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#ffe8b2',
+        backgroundColor: '#ffd257',
     },
     mapIcon: {
         margin: 0

@@ -3,6 +3,7 @@ import { Text, View, ScrollView, FlatList } from 'react-native'
 import styles from './styles'
 import ListItem from '../../UI/ListItem/ListItem';
 import endpoint from '../../../config/endpoint'
+import MapModal from '../../UI/MapModal/MapModal';
 
 export class EventsList extends Component {
 
@@ -10,13 +11,14 @@ export class EventsList extends Component {
         super(props)
 
         this.state = {
-            events: null
+            events: null,
+            showModal: false
         };
     };
 
     componentWillMount() {
         const query = {
-            method: "test_getEvent",
+            method: "getEvents",
             payload: "true"
         }
         fetch(endpoint, {
@@ -35,17 +37,31 @@ export class EventsList extends Component {
         })
     }
 
+    openMap = place => {
+
+        this.setState({
+            ...this.state,
+            showModal: place
+        })
+    }
+
     render() {
         const { events } = this.state
-
+        console.log(this.props)
         return (
             <ScrollView style={styles.listWrap}>
                 <FlatList
                     data={events}
-                    renderItem={({item}) => <ListItem event={item} />}
+                    renderItem={({item}) => 
+                        <ListItem 
+                            event={item} 
+                            openMap={(place)=>this.openMap(place)} 
+                            router={this.props.router}
+                        />}
                     keyExtractor={item => item.eid}
                     style={styles.list}
                 />
+                <MapModal mapToShow={this.state.showModal} />
             </ScrollView>
         )
     }

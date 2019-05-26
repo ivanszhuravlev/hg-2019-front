@@ -7,7 +7,7 @@ export default class App extends Component<Props> {
     return (
       <React.Fragment>
         <Routes/>
-        <NavBar/>
+        
       </React.Fragment>
     );
   }

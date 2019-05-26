@@ -10,22 +10,31 @@ import {
 import styles from './styles'
 import Icon from 'react-native-vector-icons/FontAwesome';
 
+
 class NavBar extends Component {
 
     constructor(props) {
         super(props)
     }
     
+    openList = () => {
+        this.props.router.replace.List()
+    }
+    
+    openAddition = () => {
+        this.props.router.replace.Addition()
+        
+    }
 
     render() {
         return ( 
             <View style={styles.NavBar}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={()=>this.openList()}>
                     <View style={styles.MenuButton}>
                         <Icon name="list" size={24} color="#ffffff" /> 
                     </View>
                 </TouchableOpacity>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={()=>this.openAddition()}>
                     <View style={styles.MenuButton}>
                         <Icon name="plus" size={24} color="#ffffff" /> 
                     </View>
