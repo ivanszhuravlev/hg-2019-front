@@ -15,9 +15,10 @@ export class EventPage extends Component {
 
     render() {
         // const { events } = this.state
-        console.log(this.props)
-        return (
+        
+        return this.props.event && (
             <ScrollView >
+                
                 
             </ScrollView>
         )

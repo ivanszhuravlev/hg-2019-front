@@ -1,7 +1,7 @@
 import React, {
     Component
 } from 'react'
-import { Modal, Text, TouchableHighlight } from 'react-native'
+import { Modal, Text, TouchableHighlight, View, ImageBackground } from 'react-native'
 import styles from './styles'
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -32,6 +32,7 @@ class MapModal extends Component {
     }
 
     componentWillReceiveProps = (nextProps) => {
+        console.log(nextProps)
         if (nextProps.mapToShow) this.showMap(nextProps.mapToShow)
     };
 
@@ -40,7 +41,6 @@ class MapModal extends Component {
         const { mark } = this.props
         return (
             <Modal
-                style={styles.modal}
                 animationType="slide"
                 transparent={false}
                 visible={this.state.modalVisible}
@@ -48,18 +48,22 @@ class MapModal extends Component {
                     Alert.alert('Modal has been closed.');
                 }}
             >
-                <TouchableHighlight
-                    onPress={() => {
-                        this.closeModal();
-                    }}
-                    style={styles.closeButton}
-                >
-                    <Icon
-                        name="times"
-                        size={28}
-                        color="#222222"
-                    />
-                </TouchableHighlight>
+                <View style={styles.modal}>
+                    <TouchableHighlight
+                        onPress={() => {
+                            this.closeModal();
+                        }}
+                        style={styles.closeButton}
+                    >
+                        <Icon
+                            name="times"
+                            size={28}
+                            color="#222222"
+                        />
+                    </TouchableHighlight>
+                    <ImageBackground source={require('../../../assets/map.jpg')} style={styles.map} imageStyle={{resizeMode: 'cover'}}>
+                    </ImageBackground>
+                </View>
             </Modal>
         )
     }

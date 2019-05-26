@@ -11,7 +11,16 @@ const styles = StyleSheet.create({
         marginRight: 12,
     },
     modal: {
-        paddingTop: 40
+        paddingTop: 52,
+        paddingBottom: 12,
+        paddingHorizontal: 12,
+        position: 'relative',
+        flexDirection: 'column',
+    },
+    map: {
+        height: '100%',
+        position: 'relative',
+
     }
 });
 
